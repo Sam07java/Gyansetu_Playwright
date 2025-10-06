@@ -1,0 +1,14 @@
+{
+ "login_Data": {
+
+    "studentUserName" : "shaliniUnni028@yopmail.com",
+    "student_password" : "Sasa@1234",
+    "student_phoneNumber" : "9888854352",
+  
+    "teacherUsername": "user2@example.com",
+    "teacher_password": "Password@456",
+
+    "parent_username": "parent3@yopmail.com",
+    "parent_password": "Sasa@7890"
+ }
+}
