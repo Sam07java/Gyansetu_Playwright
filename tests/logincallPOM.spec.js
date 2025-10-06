@@ -97,13 +97,14 @@ test('Login for New student sign-up Chat', async ({page})=>{
     await sigupChat.enter_the_details('Arun BB')
 
     //Guardian Name
-    await sigupChat.enter_the_details('Susheel')
+    await sigupChat.enter_the_details('Afsal P')
+    // await sigupChat.enter_the_details('Susheel')
     
     // Pro Pic upload
+    // await page.setDefaultTimeout(3000);
     await sigupChat.upload_profile_pic("uytr.jpg")
 
     //Entity
-    
     await sigupChat.select_Expectedoption('School')
 
     //Select School
@@ -117,6 +118,7 @@ test('Login for New student sign-up Chat', async ({page})=>{
     // await page.waitForTimeout(1000)
 
     //Hobbies
+    // await sigupChat.click_on_skip()
     await sigupChat.select_Expectedoption('Writing')
     // await page.waitForTimeout(2000)
 
@@ -143,12 +145,12 @@ test('Login for New student sign-up Chat', async ({page})=>{
     await sigupChat.enter_the_details(login_Data.parent_username)
 
     // Parent Phone Number
-    await sigupChat.enter_the_details(login_Data.parent_password)
+    await sigupChat.enter_the_details(login_Data.parent_phoneNumber)
 
     // Country
     await sigupChat.select_Expectedoption('India')
 
-    // State
+    // Stategit
     await sigupChat.select_Expectedoption('Kerala')
 
     // District
