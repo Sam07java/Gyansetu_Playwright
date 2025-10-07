@@ -28,6 +28,9 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
+    launchOptions : {
+      args : ['--start-maximized'] 
+    },
     headless : false,
     trace : 'on',
     screenshot : 'only-on-failure',

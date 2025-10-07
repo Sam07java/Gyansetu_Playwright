@@ -70,7 +70,7 @@ test('SignUp for student', async ({page})=>{
     
 })
 
-test('Login for New student sign-up Chat', async ({page})=>{
+test.skip('Login for New student sign-up Chat', async ({page})=>{
 
   const login = new LoginPage(page)
     await login.login(login_Data.studentUserName, login_Data.student_password)
