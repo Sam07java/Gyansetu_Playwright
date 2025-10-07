@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
-
+import dotenv from 'dotenv';
+dotenv.config();
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -8,7 +9,7 @@ import { defineConfig, devices } from '@playwright/test';
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
-require('dotenv').config()
+//  require('dotenv').config()
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -20,7 +21,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
+  /* Opt out of parallel tests on CI. */  
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
@@ -28,12 +29,12 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-    launchOptions : {
-      args : ['--start-maximized'] 
-    },
+    // launchOptions : {
+    //   args : ['--start-maximized'] 
+    // },
     headless : false,
-    trace : 'on',
-    screenshot : 'only-on-failure',
+    //trace : 'on',
+    //screenshot : 'only-on-failure',
     // video : 'retain-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // trace : 'on-first-retry',

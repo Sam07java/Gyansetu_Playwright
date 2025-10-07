@@ -5,6 +5,19 @@ import { SignupPAge } from '../pages/SignupPage'
 import { login_Data } from '../testData/loginData.json'
 import { SignUpChat } from '../pages/signup-chat_Page'
 import { DatePickerHelper } from '../utility/datePickerHelper'
+import { StudentDashboard } from '../pages/StudentDashboard'
+
+// test.use({
+//   viewport: null,
+//   deviceScaleFactor: undefined,
+//   launchOptions: {
+//     args: ['--start-maximized']
+//   }
+// })
+test.use({
+  viewport: null,
+  launchOptions: { args: ['--start-maximized'] },
+})
 
 
 test.beforeEach(async ({page})=>{
@@ -34,7 +47,7 @@ test.skip('Login',async ({page})=>{
      await page.pause()
 })
 
-test('SignUp for student', async ({page})=>{
+test.skip('SignUp for student', async ({page})=>{
     
     const homepage = new HomePage(page)
     const signuppage = new SignupPAge(page)
@@ -68,6 +81,17 @@ test('SignUp for student', async ({page})=>{
       default:throw new Error(`Unexpected toaster message: ${toast}`)
     }
     
+})
+
+test('Login for student enter the deatils on profile edit page', async ({page})=>{
+  const login = new LoginPage(page)
+    await login.login(login_Data.studentUserName, login_Data.student_password)
+    await page.waitForTimeout(3000)
+
+    const Studentdashboard = new StudentDashboard(page)
+    await Studentdashboard.close_signupChat_ifPresent()
+    await page.pause()
+
 })
 
 test.skip('Login for New student sign-up Chat', async ({page})=>{
