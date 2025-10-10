@@ -6,18 +6,19 @@ import { login_Data } from '../testData/loginData.json'
 import { SignUpChat } from '../pages/signup-chat_Page'
 import { DatePickerHelper } from '../utility/datePickerHelper'
 import { StudentDashboard } from '../pages/StudentDashboard'
+require('dotenv').config()
 
-// test.use({
-//   viewport: null,
-//   deviceScaleFactor: undefined,
-//   launchOptions: {
-//     args: ['--start-maximized']
-//   }
-// })
 test.use({
   viewport: null,
-  launchOptions: { args: ['--start-maximized'] },
+  // deviceScaleFactor: undefined,
+  launchOptions: {
+    args: ['--start-maximized']
+  }
 })
+// test.use({
+//   viewport: null,
+//   launchOptions: { args: ['--start-maximized'] },
+// })
 
 
 test.beforeEach(async ({page})=>{
