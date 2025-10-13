@@ -18,7 +18,7 @@ class LoginPage {
       //   viewport: null,
       //   launchOptions: { args: ['--start-maximized'] },
       // })
-        await this.page.setViewportSize({ width: 1920, height: 1080 });
+        // await this.page.setViewportSize({ width: 1920, height: 1080 });
         await this.page.goto(process.env.URL)
     }
 

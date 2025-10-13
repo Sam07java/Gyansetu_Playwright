@@ -6,7 +6,7 @@ export class DatePickerHelper {
     this.page = page;
   }
 
-  async selectDate(date, month, year) {
+  async selectDate(date, month, year, options = { clickSubmit: true }) {
 
     console.log("Opening date picker...");
     await this.page.getByRole("button", { name: "Choose date" }).click();
@@ -70,7 +70,16 @@ export class DatePickerHelper {
     }
 
     // Submit
-    await this.page.locator('//button[@class="chat_search_btn"]').click();
-    console.log("Submit button clicked after date selection");
+    // await this.page.locator('//button[@class="chat_search_btn"]').click();
+    // console.log("Submit button clicked after date selection");
+
+    // ✅ Conditionally click submit button
+    if (options.clickSubmit) {
+      await this.page.locator('//button[@class="chat_search_btn"]').click();
+      console.log("Submit button clicked after date selection");
+    } else {
+      console.log("Skipped submit button as per configuration");
+    }
+
   }
 }

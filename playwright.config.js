@@ -33,8 +33,8 @@ export default defineConfig({
     //   args : ['--start-maximized'] 
     // },
     headless : false,
-    //trace : 'on',
-    //screenshot : 'only-on-failure',
+    trace : 'on',
+    screenshot : 'only-on-failure',
     // video : 'retain-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // trace : 'on-first-retry',

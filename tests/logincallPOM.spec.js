@@ -7,17 +7,13 @@ import { SignUpChat } from '../pages/signup-chat_Page'
 import { DatePickerHelper } from '../utility/datePickerHelper'
 import { StudentDashboard } from '../pages/StudentDashboard'
 require('dotenv').config()
-
-test.use({
-  viewport: null,
-  // deviceScaleFactor: undefined,
-  launchOptions: {
-    args: ['--start-maximized']
-  }
-})
+import { StudentProfileEditPage } from '../pages/studentProfileEditPage' 
 // test.use({
 //   viewport: null,
-//   launchOptions: { args: ['--start-maximized'] },
+//   deviceScaleFactor: undefined,
+//   launchOptions: {
+//     args: ['--start-maximized']
+//   }
 // })
 
 
@@ -45,7 +41,7 @@ test.skip('Login',async ({page})=>{
    await sidebar.getByText('Institution Management').click()
    await sidebar.getByText('Institute').click()
    
-     await page.pause()
+    await page.pause()
 })
 
 test.skip('SignUp for student', async ({page})=>{
@@ -84,15 +80,39 @@ test.skip('SignUp for student', async ({page})=>{
     
 })
 
-test('Login for student enter the deatils on profile edit page', async ({page})=>{
+test.only('Login for student enter the deatils on profile edit page', async ({page})=>{
   const login = new LoginPage(page)
     await login.login(login_Data.studentUserName, login_Data.student_password)
     await page.waitForTimeout(3000)
 
     const Studentdashboard = new StudentDashboard(page)
     await Studentdashboard.close_signupChat_ifPresent()
+
+    await Studentdashboard.clickon_Profile()
+
+    const profileEdit = new StudentProfileEditPage(page)
+    
+    //Enter First name
+    await profileEdit.enterFirstName('Sameer')
+    //Enter Last name
+    await profileEdit.enterLastName('Salim')
+    //DOB
+    const dateSelect = new DatePickerHelper(page)
+    await  dateSelect.selectDate('20', 'June', '2000', { clickSubmit: false })
+    // Gender
+    await profileEdit.selectGender('female')
+    //Father Name
+    await profileEdit.enterFatherName('Arun BB')
+    //Mother Name
+    await profileEdit.enterMotherName('Anvi J')
+    //Guardian Name
+    await profileEdit.enterGuardianName('Afsal P')
+    //Aim
+    await profileEdit.enterAim('Sasas')
+
     await page.pause()
 
+    await Studentdashboard.clickon_Logout()
 })
 
 test.skip('Login for New student sign-up Chat', async ({page})=>{

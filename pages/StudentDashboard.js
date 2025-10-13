@@ -3,17 +3,18 @@ exports.StudentDashboard = class StudentDashboard {
         this.page = page;
         this.signupChatCloseButton = 'button[aria-label="close"]'
         this.chatCloseConformButton = 'Ok'
+        this.userProfileIcon = "//img[@class='rounded-circle p-1 border']"
     }
 
     async close_signupChat_ifPresent() {
         const path = require("path");   
         try {
             console.log("Checking for signup chat popup...");
-            const isChatVisible = await this.page.locator(this.signupChatCloseButton).isVisible({ timeout: 5000 });
+            const isChatVisible = await this.page.locator(this.signupChatCloseButton)
+            // isVisible({ timeout: 2000 });
             if (isChatVisible) {
                 console.log("Signup chat popup is visible. Closing it...");
                 await this.page.locator(this.signupChatCloseButton).click();
-                await this.page.waitForTimeout(500);
                 await this.page.getByText(this.chatCloseConformButton).click();
                 console.log("Signup chat popup closed.");
             } else {
@@ -39,4 +40,20 @@ exports.StudentDashboard = class StudentDashboard {
             }
         }
     }
+
+    async clickon_Profile(){
+        console.log("Clicking on user profile icon...");
+        await this.page.locator(this.userProfileIcon).click()
+        console.log("Clicking on Profile link...");
+        await this.page.getByText(' Profile').first().click()
+    }
+
+    async clickon_Logout(){
+        console.log("Clicking on user profile icon for logout...");
+        await this.page.locator(this.userProfileIcon).click()
+        console.log("Clicking on Logout link...");
+        await this.page.getByText('Logout').click()
+    }
+
+    
 }
