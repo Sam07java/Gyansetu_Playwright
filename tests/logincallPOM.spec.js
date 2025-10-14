@@ -92,6 +92,7 @@ test.only('Login for student enter the deatils on profile edit page', async ({pa
 
     const profileEdit = new StudentProfileEditPage(page)
     
+    // First Page
     //Enter First name
     await profileEdit.enterFirstName('Sameer')
     //Enter Last name
@@ -100,7 +101,7 @@ test.only('Login for student enter the deatils on profile edit page', async ({pa
     const dateSelect = new DatePickerHelper(page)
     await  dateSelect.selectDate('20', 'June', '2000', { clickSubmit: false })
     // Gender
-    await profileEdit.selectGender('female')
+    await profileEdit.selectGender('Female')
     //Father Name
     await profileEdit.enterFatherName('Arun BB')
     //Mother Name
@@ -109,6 +110,24 @@ test.only('Login for student enter the deatils on profile edit page', async ({pa
     await profileEdit.enterGuardianName('Afsal P')
     //Aim
     await profileEdit.enterAim('Sasas')
+    //Profile Pic upload
+    await profileEdit.uploadProfilePicture("uytr.jpg")
+    // Cliclk on Next button
+    await profileEdit.clickNextButton()
+
+
+    // Address Page
+    await profileEdit.enter_Address1('fsd')
+    await profileEdit.enter_Address2('fsdfd')
+    await profileEdit.select_Country('India')
+    await profileEdit.select_State('Kerala')
+    await profileEdit.enter_City('Alapy')
+    await profileEdit.enter_District('Alappuzha')
+    await profileEdit.enter_PinCode('877712')
+    await profileEdit.click_PermenmentAddressCheckbox()
+    await profileEdit.clickNextButton()
+
+    //Hobbies and Language Page
 
     await page.pause()
 
