@@ -13,10 +13,10 @@ class SignUpChat {
     async enter_the_details(data) {
         // const path = require("path");
         // try {
-        console.log('Entering Full Name on text field...');
+        console.log('Entering data on text field...');
         await this.page.locator(this.forTextField).fill(data);
         await this.page.locator(this.forTextField).press('Enter');
-        console.log(`Full Name entered successfully: ${data}`);
+        console.log(`Data entered successfully: ${data}`);
         // } catch (error) {
         // console.error('❌ Failed to enter full name:', error);
         // // capture screenshot for debugging
@@ -32,7 +32,7 @@ class SignUpChat {
         // await this.page.locator(this.dropdownButton).waitFor({ state: 'visible', timeout: 10000 });
         console.log("Opening dropdown...");
         await this.page.locator(this.dropdownButton).click();
-        await this.page.waitForTimeout(1000);  // wait for options to load
+        await this.page.waitForTimeout(500);  // wait for options to load
         const alloptions = await this.page.$$(this.dropdownOptions);
         console.log(`Found ${alloptions.length} options in dropdown`);
 
@@ -41,14 +41,14 @@ class SignUpChat {
         for (const option of alloptions) {
             const text = (await option.textContent()).trim().toLowerCase();
             console.log(`Checking option: "${text}"`);
-
-            if (text.includes(expectedOption.toLowerCase())) {
-            console.log(`✅ Match found: "${text}" — clicking this option`);
-            await option.click();
-            optionFound = true;
-            break;
+            if (text === expectedOption.toLowerCase()) {
+                console.log(`✅ Match found: "${text}" — clicking this option`);
+                await option.click();
+                optionFound = true;
+                break;
             }
         }
+            this.page.waitForTimeout(1000);
 
             if(!optionFound) {
             console.warn(`⚠️ Option "${expectedOption}" not found in dropdown`);

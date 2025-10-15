@@ -4,6 +4,7 @@ exports.StudentDashboard = class StudentDashboard {
         this.signupChatCloseButton = 'button[aria-label="close"]'
         this.chatCloseConformButton = 'Ok'
         this.userProfileIcon = "//img[@class='rounded-circle p-1 border']"
+        this.logoutButton = "//button[data-testid='logout-btn']"
     }
 
     async close_signupChat_ifPresent() {
@@ -50,9 +51,13 @@ exports.StudentDashboard = class StudentDashboard {
 
     async clickon_Logout(){
         console.log("Clicking on user profile icon for logout...");
-        await this.page.locator(this.userProfileIcon).click()
+        // await this.page.locator(this.userProfileIcon).click()
+            await this.page.locator('.rounded-circle.p-1.border').click();
+        // await this.page.getByRole('listitem').filter({ hasText: 'Hello, Sameer Profile' }).getByRole('link').click();
         console.log("Clicking on Logout link...");
-        await this.page.getByText('Logout').click()
+        // await this.page.getByText('Logout').click()
+        await this.page.locator(this.logoutButton).click()
+        console.log("Clicked on Logout link.");
     }
 
     

@@ -1,15 +1,15 @@
 {
  "login_Data": {
-
-    "studentUserName" : "vidyavijay045@yopmail.com",
+    "studentUserName" : "vidyavijay063@yopmail.com",
     "student_password" : "Sasa@1234",
-    "student_phoneNumber" : "9888854373",
+    "student_phoneNumber" : "9888854393",
   
     "teacherUsername": "user2@example.com",
     "teacher_password": "Password@456",
 
-    "parent_username": "parent3@yopmail.com",
-    "parent_phoneNumber": "9877712345",
+    "parent_username": "parent13@yopmail.com",
+    "parent_phoneNumber": "9877712363",
     "parent_password": "Parent@123"
  }
 }
+

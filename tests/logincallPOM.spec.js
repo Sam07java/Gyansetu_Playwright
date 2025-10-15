@@ -28,11 +28,12 @@ test.beforeEach(async ({page})=>{
   await homepage.clickOnSign_In_Emailand_Phone()
 })
 
-test.skip('Login',async ({page})=>{
+test.skip('Login for admin',async ({page})=>{
 
   const login = new LoginPage(page)
 
   await login.login(process.env.USER_NAME_ADMIN, process.env.PASSWOR_ADMIN)
+  
 
    let sidebar = page.locator('.metismenu');
    await sidebar.hover()
@@ -40,11 +41,25 @@ test.skip('Login',async ({page})=>{
    await sidebar.getByText('Master Management').click()
    await sidebar.getByText('Institution Management').click()
    await sidebar.getByText('Institute').click()
+
+      const Studentdashboard = new StudentDashboard(page)
+      await Studentdashboard.close_signupChat_ifPresent()
+      await Studentdashboard.clickon_Logout()
    
     await page.pause()
 })
 
-test.skip('SignUp for student', async ({page})=>{
+test.skip('Login for student', async ({page})=>{
+  const login = new LoginPage(page)
+    await login.login(login_Data.studentUserName, login_Data.student_password)
+    //  "vidyavijay049@yopmail.com",
+    await page.waitForTimeout(3000)
+    const Studentdashboard = new StudentDashboard(page)
+      await Studentdashboard.close_signupChat_ifPresent()
+      await Studentdashboard.clickon_Logout()
+  })
+
+test('SignUp for student', async ({page})=>{
     
     const homepage = new HomePage(page)
     const signuppage = new SignupPAge(page)
@@ -72,7 +87,9 @@ test.skip('SignUp for student', async ({page})=>{
       case 'User created successfully':
       expect(toast).toBe('User created successfully')
       console.log(toast);
-      await page.pause();
+        const Studentdashboard = new StudentDashboard(page)
+        await Studentdashboard.close_signupChat_ifPresent()
+        await Studentdashboard.clickon_Logout()
       break
 
       default:throw new Error(`Unexpected toaster message: ${toast}`)
@@ -80,61 +97,8 @@ test.skip('SignUp for student', async ({page})=>{
     
 })
 
-test.only('Login for student enter the deatils on profile edit page', async ({page})=>{
-  const login = new LoginPage(page)
-    await login.login(login_Data.studentUserName, login_Data.student_password)
-    await page.waitForTimeout(3000)
 
-    const Studentdashboard = new StudentDashboard(page)
-    await Studentdashboard.close_signupChat_ifPresent()
-
-    await Studentdashboard.clickon_Profile()
-
-    const profileEdit = new StudentProfileEditPage(page)
-    
-    // First Page
-    //Enter First name
-    await profileEdit.enterFirstName('Sameer')
-    //Enter Last name
-    await profileEdit.enterLastName('Salim')
-    //DOB
-    const dateSelect = new DatePickerHelper(page)
-    await  dateSelect.selectDate('20', 'June', '2000', { clickSubmit: false })
-    // Gender
-    await profileEdit.selectGender('Female')
-    //Father Name
-    await profileEdit.enterFatherName('Arun BB')
-    //Mother Name
-    await profileEdit.enterMotherName('Anvi J')
-    //Guardian Name
-    await profileEdit.enterGuardianName('Afsal P')
-    //Aim
-    await profileEdit.enterAim('Sasas')
-    //Profile Pic upload
-    await profileEdit.uploadProfilePicture("uytr.jpg")
-    // Cliclk on Next button
-    await profileEdit.clickNextButton()
-
-
-    // Address Page
-    await profileEdit.enter_Address1('fsd')
-    await profileEdit.enter_Address2('fsdfd')
-    await profileEdit.select_Country('India')
-    await profileEdit.select_State('Kerala')
-    await profileEdit.enter_City('Alapy')
-    await profileEdit.enter_District('Alappuzha')
-    await profileEdit.enter_PinCode('877712')
-    await profileEdit.click_PermenmentAddressCheckbox()
-    await profileEdit.clickNextButton()
-
-    //Hobbies and Language Page
-
-    await page.pause()
-
-    await Studentdashboard.clickon_Logout()
-})
-
-test.skip('Login for New student sign-up Chat', async ({page})=>{
+test('Login for New student sign-up Chat', async ({page})=>{
 
   const login = new LoginPage(page)
     await login.login(login_Data.studentUserName, login_Data.student_password)
@@ -212,10 +176,13 @@ test.skip('Login for New student sign-up Chat', async ({page})=>{
     await sigupChat.enter_the_details(login_Data.parent_phoneNumber)
 
     // Country
+    // await page.pause()
     await sigupChat.select_Expectedoption('India')
+    // await page.pause()
 
     // Stategit
     await sigupChat.select_Expectedoption('Kerala')
+    // await page.pause()
 
     // District
     await sigupChat.enter_the_details('Alappuzha')
@@ -234,6 +201,68 @@ test.skip('Login for New student sign-up Chat', async ({page})=>{
 
     //click on view profile
     await sigupChat.click_on_viewProfile()
+    await page.waitForTimeout(5000)
+
+    //logout after signup chat
+    const Studentdashboard = new StudentDashboard(page)
+    await Studentdashboard.clickon_Logout()
 
     await page.pause()
 })
+
+
+test.skip('Login for student enter the deatils on profile edit page', async ({page})=>{
+  const login = new LoginPage(page)
+    await login.login(login_Data.studentUserName, login_Data.student_password)
+    await page.waitForTimeout(3000)
+
+    const Studentdashboard = new StudentDashboard(page)
+    await Studentdashboard.close_signupChat_ifPresent()
+
+    await Studentdashboard.clickon_Profile()
+
+    const profileEdit = new StudentProfileEditPage(page)
+    
+    // First Page
+    //Enter First name
+    await profileEdit.enterFirstName('Sameer')
+    //Enter Last name
+    await profileEdit.enterLastName('Salim')
+    //DOB
+    const dateSelect = new DatePickerHelper(page)
+    await  dateSelect.selectDate('20', 'June', '2000', { clickSubmit: false })
+    // Gender
+    await profileEdit.selectGender('Female')
+    //Father Name
+    await profileEdit.enterFatherName('Arun BB')
+    //Mother Name
+    await profileEdit.enterMotherName('Anvi J')
+    //Guardian Name
+    await profileEdit.enterGuardianName('Afsal P')
+    //Aim
+    await profileEdit.enterAim('Sasas')
+    //Profile Pic upload
+    await profileEdit.uploadProfilePicture("uytr.jpg")
+    // Cliclk on Next button
+    await profileEdit.clickNextButton()
+
+
+    // Address Page
+    await profileEdit.enter_Address1('fsd')
+    await profileEdit.enter_Address2('fsdfd')
+    await profileEdit.select_Country('India')
+    await profileEdit.select_State('Kerala')
+    await profileEdit.enter_City('Alapy')
+    await profileEdit.enter_District('Alappuzha')
+    await profileEdit.enter_PinCode('877712')
+    await profileEdit.click_PermenmentAddressCheckbox()
+    await profileEdit.clickNextButton()
+
+    //Hobbies and Language Page
+    
+
+    await page.pause()
+
+    await Studentdashboard.clickon_Logout()
+})
+ 
