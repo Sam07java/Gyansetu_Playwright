@@ -3,8 +3,8 @@ exports.StudentDashboard = class StudentDashboard {
         this.page = page;
         this.signupChatCloseButton = 'button[aria-label="close"]'
         this.chatCloseConformButton = 'Ok'
-        this.userProfileIcon = "//img[@class='rounded-circle p-1 border']"
-        this.logoutButton = "//button[data-testid='logout-btn']"
+        this.userProfileIcon = "img[class='rounded-circle p-1 border']"
+        this.logoutButton = "button[data-testid='logout-btn']"
     }
 
     async close_signupChat_ifPresent() {

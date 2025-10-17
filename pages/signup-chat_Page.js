@@ -48,7 +48,7 @@ class SignUpChat {
                 break;
             }
         }
-            this.page.waitForTimeout(1000);
+            // this.page.waitForTimeout(1000);
 
             if(!optionFound) {
             console.warn(`⚠️ Option "${expectedOption}" not found in dropdown`);

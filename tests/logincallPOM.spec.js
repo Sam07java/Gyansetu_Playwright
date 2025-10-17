@@ -105,8 +105,9 @@ test('Login for New student sign-up Chat', async ({page})=>{
     await page.waitForTimeout(3000)
   
   const sigupChat = new SignUpChat(page)
+  const Studentdashboard = new StudentDashboard(page)
     //FullName
-    await sigupChat.enter_the_details('Sameer Salim')
+    await sigupChat.enter_the_details('Salim NN')
 
     //dob
     const dateSelect = new DatePickerHelper(page)
@@ -200,11 +201,11 @@ test('Login for New student sign-up Chat', async ({page})=>{
     await sigupChat.enter_the_details('fsdfd')
 
     //click on view profile
+    await page.pause()
     await sigupChat.click_on_viewProfile()
-    await page.waitForTimeout(5000)
+    await page.waitForTimeout(3000)
 
     //logout after signup chat
-    const Studentdashboard = new StudentDashboard(page)
     await Studentdashboard.clickon_Logout()
 
     await page.pause()
