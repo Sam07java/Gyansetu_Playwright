@@ -1,15 +1,43 @@
 {
  "login_Data": {
-    "studentUserName" : "salimnn099@yopmail.com",
+    "studentUserName" : "salimnn11@yopmail.com",
     "student_password" : "Sasa@1234",
-    "student_phoneNumber" : "9888854399",
+    "student_phoneNumber" : "9888851911",
   
     "teacherUsername": "user2@example.com",
     "teacher_password": "Password@456",
 
-    "parent_username": "parent102@yopmail.com",
-    "parent_phoneNumber": "9877712102",
+    "parent_username": "parent211@yopmail.com",
+    "parent_phoneNumber": "9877712211",
     "parent_password": "Parent@123"
+ },
+
+ "Signup_chat_input": {
+    "firstName": "Amir",
+    "lastName": "NN",
+    "Aim" : "Do Something",
+    "Gender" : "male",
+    "fatherName": "Arun BB",
+    "motherName": "Anvi J",
+    "guardianName": "Afsal P",
+    "aim": "Sasas",
+    "address1": "fsd",
+    "address2": "fsdfd",
+    "city": "Alapy",
+    "district": "Alappuzha",
+    "pincode": "877712",
+    "country": "India",
+    "state": "Kerala",
+    "whatzup_Number" : "9888800001",
+    "hobbies": "Writing",
+    "languages": "Hindi",
+    "proficiency": "Both",
+    "instituteType": "School",
+    "instituteName": "Manimal HSS",
+    "class" : "class_10",
+    "course": "BSc Computer Science",
+    "subject": "Mathematics",
+    "teacher": "Sharu abu"
  }
 }
 
